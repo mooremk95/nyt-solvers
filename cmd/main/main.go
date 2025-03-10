@@ -2,11 +2,11 @@ package main
 
 import (
     "fmt"
-    "github.com/nyt-solver/letterboxed"
+    "github.com/nyt-solvers/letterboxed"
 )
 
 
 func main() {
     letterboxed.LetterboxedTest()
-    fmt.Println("Main close")
+    fmt.Println("\nMain close")
 }

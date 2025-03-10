@@ -6,7 +6,7 @@ import (
 )
 
 
-type struct Side map[rune]int
+type Side map[rune]int
 
 /* todo: Move this interface to a more appropriate module
 type Puzzle interface {
@@ -19,51 +19,64 @@ type Puzzle interface {
 }
 */
 
-type struct LetterBoxedPuzzle {
+type LetterBoxedPuzzle struct {
     sides []Side
     words []string
-    solved []bool
+    solved bool
 }
 
-func (p *Puzzle) CheckSolved() bool { 
+func (p *LetterBoxedPuzzle) CheckSolved() bool { 
     return false // todo 
 }
 
-func (p *Puzzle) AddWord(word string) {
+func (p *LetterBoxedPuzzle) AddWord(word string) {
     // todo
 }
 
-func (p *Puzzle) Solve() {
+func (p *LetterBoxedPuzzle) Solve() {
     // todo
 }
 
-func (p *Puzzle) View() string {
-    // todo
-    return ""
-}
-
-func (p *Puzzle) VerifySolution() {
-    // todo
-}
-
-func (p *Puzzle) DisplaySolution() string {
+func (p *LetterBoxedPuzzle) View() string {
     // todo
     return ""
 }
 
-func (p *puzzle) String() string {
-    var repr string = "Letterboxed Puzzle:\n\tSides:"
-    for i := 0; i < len(p.sides); i++ {
-        repr += fmt.Sprintf("\t\t%v\n", p.sides[i])
+func (p *LetterBoxedPuzzle) VerifySolution() bool {
+    // todo
+    return false
+}
+
+func (p *LetterBoxedPuzzle) DisplaySolution() string {
+    // todo
+    return ""
+}
+
+func (p *LetterBoxedPuzzle) String() string {
+    var repr string = "Letterboxed Puzzle:\n\t- Sides:\n"
+    for _, side := range p.sides {
+        repr += fmt.Sprintf("\t\t+ %v\n", side)
     }
-    repr += "\n\tSolution Words:"
-    for j := 0; j < len(p.sides); j++ {
-        repr += fmt.Sprintf("%s ", p.words[j])
+    repr += "\n\t- Solution Words: "
+    for _, word := range p.words {
+        repr += fmt.Sprintf("%s ", word)
     }
-    repr += fmt.Sprintf("\n\tSolved: %v", p.solved)
+    repr += fmt.Sprintf("\n\t- Solved: %v", p.solved)
+    return repr
 }
 
 func LetterboxedTest() {
-    fmt.Println("Main for letterboxed module")
+    fmt.Println("~~~~~~~~~~~~~~~~~~~~ Letterboxed Module ~~~~~~~~~~~~~~~~~~~~")
+    var sideA = Side{'a':0, 'b':0, 'c':0, 'd':0}
+    var sideB = Side{'e':0, 'f':0, 'g':0, 'h':0}
+    var sideC = Side{'i':0, 'j':0, 'k':0, 'l':0}
+    var sideD = Side{'m':0, 'n':0, 'o':0, 'p':0}
+
+    var puzz puzzle.Puzzle = &LetterBoxedPuzzle{ 
+        []Side{sideA, sideB, sideC, sideD},
+        []string{"foo", "bar",},
+        false,
+    }  
+    fmt.Printf("%v\n", puzz)
 }
 
